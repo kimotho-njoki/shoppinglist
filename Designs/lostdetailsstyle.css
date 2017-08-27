@@ -1,0 +1,87 @@
+a:link
+{
+	color: purple;
+}
+a:hover
+{
+	color: blue;
+}
+.link
+{
+	text-align: center;
+	padding-top: 50px;
+	font-family: lucida console;
+}
+body
+{
+	padding: 100px;
+	background-image: url("white2.svg");
+	background-size: cover;
+}
+
+h2
+{
+	text-align: center; 
+	color: purple;
+	font-weight: bold;
+	font-family: antique olive;
+	font-size: 30px;
+}
+.container
+{
+	border-style: solid;
+	border-width: 0px;
+	margin-top: 25px;
+	margin-left: 300px;
+	margin-right: 300px;
+	box-shadow: 50px;
+	background-color: white;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	padding-left: 40px;
+	padding-right: 40px;
+	font-family: lucida console;
+	
+}
+p
+{
+	text-align: center;
+	font-family: lucida console;
+	font-size: 15px;
+}
+.container input
+{
+	margin-bottom: 20px;
+}
+.container input[type = "text"],
+.container input[type = "date"],
+.container input[type = "email"]
+{
+
+	border: none;
+	border-bottom: 2px solid black;
+	outline: none;
+	height: 30px;
+	width: 280px;
+}
+.container input[type = "text"]:focus,
+.container input[type = "date"]:focus,
+.container input[type = "email"]:focus
+{
+	border-bottom: 2px solid grey;
+}
+.container input[type ="submit"]
+{
+	background-color: purple;
+	height: 30px;
+	width: 450px;
+	border: none;
+	outline: none;
+	font-family: lucida console;
+	font-size: 18px;
+}
+.container input[type = "submit"]:hover
+{
+	background-color: grey;
+	font-family: lucida console;
+}
