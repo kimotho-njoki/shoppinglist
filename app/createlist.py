@@ -15,6 +15,7 @@ class UpdateLists:
 			searchObj = re.search("list_name", self.all_catalogs)
 			if searchObj:
 				self.username[searchObj.group()] = self.all_catalogs[searchObj.group()]
+				return "List Created Successfully"
 			else:
 				return "No such catalog"
 
@@ -23,7 +24,7 @@ class UpdateLists:
 			searchObj = re.search("list_name", self.username)
 			if searchObj:
 				del(self.username[searchObj.group()])
-				return self.username
+				return "List Deleted"
 			else:
 				return "No such catalog"
 
@@ -33,7 +34,7 @@ class UpdateLists:
 			searchObj = re.search("list_name", self.username)
 			if searchObj:
 				self.username[searchObj.group()] = new_values
-				return self.username
+				return "List Edited"
 			else:
 				return "No such catalog"
 

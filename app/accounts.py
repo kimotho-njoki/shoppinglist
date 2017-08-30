@@ -7,13 +7,13 @@ class User:
 			if username == usernm['username']:
 				for passwd in self.user_details.itervalues():
 					if password == passwd['password']:
-						return "Successfully logged in"
+						return "Successfully Logged In"
 					else:
 						return "Incorrect password"
 			else:
 				return "Incorrect username, if not registered please register"
 
-	def register(self, password, username):
+	def register(self, username, email, password, repassword):
 		
 		for user in self.user_details.iterkeys():
 			if username == user['username']:
@@ -23,6 +23,6 @@ class User:
 					return "Password too short"
 				else:
 					self.user_details[username] = password
-					return "Successfully signed up"
+					return "Successfully signed up. You can now LogIn."
 
 					

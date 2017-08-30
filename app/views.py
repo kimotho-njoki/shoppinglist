@@ -14,40 +14,92 @@ def login_required(f):
 			
 	return decorated_function
 
+
+
 @app.route('/')
 def home():
 	return render_template('index.html')
 
+
+
 @app.route('/registration', methods=['GET','POST'])
 def register():
-	return render_template('registration.html')
+	if request.method == 'POST':
+		username = request.form['username']
+		password = request.form['password']
+		email = request.form['email']
+		repassword = request.form['reenter-password']
 
-@app.route('/lostpwd', methods=['GET','POST'])
-@login_required
-def password():
-	return render_template('lostpwd.html')
+		msg = acc_object.register(username, email, password, repassword)
 
-@app.route('/lostusernm', methods=['GET','POST'])
-@login_required
-def username():
-	return render_template('lostusernm.html')
+		if msg == "Successfully signed up. You can now Login.":
+			return render_template('login.html', resp=msg)
+		else:
+			return render_template('registration.html', resp=msg)
+	return render_template('registration.html', resp=msg)
+
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	if request.method == 'POST':
+		username = request.form['username']
+		password = request.form['password']
+
+		msg = acc_object.Login(username, password)
+
+		if msg == "Successfully Logged In":
+			return render_template('createlist.html', resp=msg)
+		else:
+			return render_template('login.html', resp=msg)
+	return render_template('login.html')
+
+
+
 
 @app.route('/createlist', methods=['GET','POST'])
 @login_required
-def create():
+def createlist():
+	if request.method == 'POST':
+		list_name = request.form['list_name']
+
+		msg = createlist_object.create(list_name)
+
+		if msg == "List Created Successfully":
+			return render_template('createlist.html', repr=msg)
+		else:
+			return render_template('createlist.html', repr=msg)
 	return render_template('createlist.html')
 
-@app.route('/catalog', methods=['GET','POST'])
-@login_required
-def catalog():
-	return render_template('catalog.html')
 
-@app.route('/mylist1', methods=['GET','POST'])
+@app.route('/createlist', methods=['GET','POST'])
 @login_required
-def mylist1():
-	return render_template('mylist1.html')
+def deletelist():
+	if request.method == 'POST':
+		list_name = request.form['list_name']
 
-@app.route('/mylist2', methods=['GET','POST'])
+		msg = createlist_object.delete(list_name)
+
+		if msg == "List Deleted":
+			return render_template('createlist.html', repr=msg)
+		else:
+			return render_template('createlist.html', repr=msg)
+	return render_template('createlist.html')
+
+
+@app.route('/createlist', methods=['GET','POST'])
 @login_required
-def mylist2():
-	return render_template('mylist2.html')
+def editlist():
+	if request.method == 'POST':
+		list_name = request.form['list_name']
+
+		msg = createlist_object.edit(list_name)
+
+		if msg == "List Edited":
+			return render_template('createlist.html', repr=msg)
+		else:
+			return render_template('createlist.html', repr=msg)
+	return render_template('createlist.html')
+
+
+
