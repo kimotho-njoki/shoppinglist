@@ -1,8 +1,11 @@
 body
 {
-	padding: 100px;
-	background-image: url("white2.svg");
-	background-size: cover;
+	height: 100px;
+	width: 100px;
+}
+#para1
+{
+	padding-right: 50px;
 }
 .drop
 {
