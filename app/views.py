@@ -27,16 +27,19 @@ def register():
 	if request.method == 'POST':
 		username = request.form['username']
 		password = request.form['pwd']
+		print password
 		email = request.form['email']
 		repassword = request.form['repwd']
 
 		msg = acc_object.register(username, email, password, repassword)
+		print msg
 
 		if msg == "Successfully signed up. You can now LogIn.":
 			return render_template('login.html')
 		else:
 			return render_template('registration.html')
-	return render_template('registration.html')
+	else:
+		return render_template('registration.html')
 
 
 
@@ -44,15 +47,19 @@ def register():
 def login():
 	if request.method == 'POST':
 		username = request.form['username']
+		print username
 		password = request.form['pwd']
+		print password
 
-		msg = acc_object.Login(username, password)
+		msg = acc_object.LogIn(username, password)
+		print msg
 
 		if msg == "Successfully Logged In":
-			return render_template('createlist.html',resp=msg)
+			return render_template('createlist.html')
 		else:
-			return render_template('login.html', resp=msg)
-	return render_template('login.html')
+			return render_template('login.html')
+	else:
+		return render_template('login.html')
 
 
 
@@ -66,10 +73,11 @@ def createlist():
 		msg = createlist_object.create(list_name)
 
 		if msg == "List Created Successfully":
-			return render_template('createlist.html', repr=msg)
+			return render_template('createlist.html')
 		else:
-			return render_template('createlist.html', repr=msg)
-	return render_template('createlist.html')
+			return render_template('createlist.html')
+	else:
+		return render_template('createlist.html')
 
 
 @app.route('/createlist', methods=['GET','POST'])
@@ -81,10 +89,11 @@ def deletelist():
 		msg = createlist_object.delete(list_name)
 
 		if msg == "List Deleted":
-			return render_template('createlist.html', repr=msg)
+			return render_template('createlist.html')
 		else:
-			return render_template('createlist.html', repr=msg)
-	return render_template('createlist.html')
+			return render_template('createlist.html')
+	else:
+		return render_template('createlist.html')
 
 
 @app.route('/createlist', methods=['GET','POST'])
@@ -96,10 +105,11 @@ def editlist():
 		msg = createlist_object.edit(list_name)
 
 		if msg == "List Edited":
-			return render_template('createlist.html', repr=msg)
+			return render_template('createlist.html')
 		else:
-			return render_template('createlist.html', repr=msg)
-	return render_template('createlist.html')
+			return render_template('createlist.html')
+	else:
+		return render_template('createlist.html')
 
 
 
