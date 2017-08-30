@@ -26,17 +26,17 @@ def home():
 def register():
 	if request.method == 'POST':
 		username = request.form['username']
-		password = request.form['password']
+		password = request.form['pwd']
 		email = request.form['email']
-		repassword = request.form['reenter-password']
+		repassword = request.form['repwd']
 
 		msg = acc_object.register(username, email, password, repassword)
 
 		if msg == "Successfully signed up. You can now LogIn.":
 			return render_template('login.html')
 		else:
-			return render_template('registration.html', resp=msg)
-	return render_template('registration.html', resp=msg)
+			return render_template('registration.html')
+	return render_template('registration.html')
 
 
 
@@ -44,7 +44,7 @@ def register():
 def login():
 	if request.method == 'POST':
 		username = request.form['username']
-		password = request.form['password']
+		password = request.form['pwd']
 
 		msg = acc_object.Login(username, password)
 
