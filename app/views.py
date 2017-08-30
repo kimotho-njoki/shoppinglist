@@ -32,8 +32,8 @@ def register():
 
 		msg = acc_object.register(username, email, password, repassword)
 
-		if msg == "Successfully signed up. You can now Login.":
-			return render_template('login.html', resp=msg)
+		if msg == "Successfully signed up. You can now LogIn.":
+			return render_template('login.html')
 		else:
 			return render_template('registration.html', resp=msg)
 	return render_template('registration.html', resp=msg)
@@ -49,7 +49,7 @@ def login():
 		msg = acc_object.Login(username, password)
 
 		if msg == "Successfully Logged In":
-			return render_template('createlist.html', resp=msg)
+			return render_template('createlist.html',resp=msg)
 		else:
 			return render_template('login.html', resp=msg)
 	return render_template('login.html')
