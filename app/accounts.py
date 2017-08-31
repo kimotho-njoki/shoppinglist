@@ -8,16 +8,16 @@ class User:
 			if self.user_details[username] == password:
 				return "Successfully Logged In"
 			else:
-				return "Wrong Password"
+				return "Incorrect Password"
 		else:
-			return "Please Register"
+			return "Account does not exist. Please Register"
 		
 
 	def register(self, username, email, password, repassword):
 		if username in self.user_details:
 			return "Username already exists"
 		else:
-			if len(password) < 8:
+			if len(password) < 6:
 				return "Password too short"
 			else:
 				self.user_details[username] = password

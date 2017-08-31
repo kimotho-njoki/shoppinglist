@@ -1,42 +1,36 @@
-import re
 
 class UpdateLists:
 	def __init__(self):
-		#dictionary holds all catalogs, each holds a list
+		#dictionary holds all catalogs, each holds a list with items
 		self.all_catalogs = {}
 		#dictionary of all the users shoppinglists
-		self.username = {}
+		self.myLists = {}
 		
 	
     
 	def create(self, list_name):
-		
-		for items in self.all_catalogs.iterkeys():
-			searchObj = re.search("list_name", self.all_catalogs)
-			if searchObj:
-				self.username[searchObj.group()] = self.all_catalogs[searchObj.group()]
-				return "List Created Successfully"
-			else:
-				return "No such catalog"
+		if list_name in self.all_catalogs:
+			self.myLists[list_name] = self.all_catalogs[list_name]
+			return "List Created Successfully"
+		else:
+			return "Catalog Not Found"
 
+	
 	def delete(self, list_name):
-		for items in self.username.iterkeys():
-			searchObj = re.search("list_name", self.username)
-			if searchObj:
-				del(self.username[searchObj.group()])
-				return "List Deleted"
-			else:
-				return "No such catalog"
+		if list_name in self.myLists:
+			del myLists[list_name]
+			return "List Successfully Deleted"
+		else:
+			return "List Not Found"
+
 
 	def edit(self, list_name):
-		new_values = []
-		for items in self.username.iterkeys():
-			searchObj = re.search("list_name", self.username)
-			if searchObj:
-				self.username[searchObj.group()] = new_values
-				return "List Edited"
-			else:
-				return "No such catalog"
+		new_items = []
+		if list_name in self.all_catalogs:
+			self.myLists.get(list_name) and self.myLists.update({list_name:new_items})
+			return "List Edited Successfully"
+		else:
+			return "List Not Found"
 
 
 
