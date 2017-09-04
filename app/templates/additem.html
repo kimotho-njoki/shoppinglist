@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<form action="/additem" method="POST">
+Item name:
+<input type="text" name="item_name">
+<input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}

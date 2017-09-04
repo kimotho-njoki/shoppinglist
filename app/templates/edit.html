@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<form action="/edit" method="POST">
+List Name:
+<input type="text" name="list_name">
+New List Name:
+<input type="text" name="new_list_name">
+<input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}

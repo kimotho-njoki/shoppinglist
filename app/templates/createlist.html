@@ -3,15 +3,12 @@
 
 {% block content %}
 
-<h2> Create You List </h2>
+<h2> Create Your List </h2>
 <hr>
-
 <form action="/createlist" method="POST">
-
-List_name:
-<input type="text" name="listname">
-
-<input type="submit" value="submit">
+<input type="button" value="Create New list" onclick="window.location.href='create.html'">
+<input type="button" value="Update list" onclick="window.location.href='edit.html'">
+<input type="button" value="Delete list" onclick="window.location.href='delete.html'">
 </form>
 
 {% endblock %}

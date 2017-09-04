@@ -10,7 +10,7 @@ class User:
 			else:
 				return "Incorrect Password"
 		else:
-			return "Account does not exist. Please Register"
+			return "Account does not exist. Please Register."
 		
 
 	def register(self, username, email, password, repassword):

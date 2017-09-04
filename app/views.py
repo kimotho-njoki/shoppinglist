@@ -2,7 +2,7 @@ from flask import render_template, request, session, url_for
 from functools import wraps
 from app import app, acc_object, createlist_object
 
-
+#custom decorator
 def login_required(f):
 	@wraps(f)
 	def decorated_function(*args, **kwargs):
@@ -27,12 +27,10 @@ def register():
 	if request.method == 'POST':
 		username = request.form['username']
 		password = request.form['pwd']
-		print password
 		email = request.form['email']
 		repassword = request.form['repwd']
 
 		msg = acc_object.register(username, email, password, repassword)
-		print msg
 
 		if msg == "Successfully signed up. You can now LogIn.":
 			return render_template('login.html')
@@ -47,14 +45,12 @@ def register():
 def login():
 	if request.method == 'POST':
 		username = request.form['username']
-		print username
 		password = request.form['pwd']
-		print password
 
 		msg = acc_object.LogIn(username, password)
-		print msg
 
 		if msg == "Successfully Logged In":
+			session['username'] = username
 			return render_template('createlist.html')
 		else:
 			return render_template('login.html')
@@ -64,8 +60,7 @@ def login():
 
 
 
-@app.route('/createlist', methods=['GET','POST'])
-@login_required
+@app.route('/create', methods=['GET','POST'])
 def createlist():
 	if request.method == 'POST':
 		list_name = request.form['list_name']
@@ -73,43 +68,51 @@ def createlist():
 		msg = createlist_object.create(list_name)
 
 		if msg == "List Created Successfully":
-			return render_template('createlist.html')
+			return render_template('additem.html')
 		else:
-			return render_template('createlist.html')
+			return render_template('create.html')
 	else:
-		return render_template('createlist.html')
+		return render_template('create.html')
 
 
-@app.route('/createlist', methods=['GET','POST'])
-@login_required
+
+@app.route('/delete', methods=['GET','POST'])
 def deletelist():
 	if request.method == 'POST':
 		list_name = request.form['list_name']
 
 		msg = createlist_object.delete(list_name)
+		print msg
 
-		if msg == "List Deleted":
+		if msg == "List Successfully Deleted":
 			return render_template('createlist.html')
 		else:
-			return render_template('createlist.html')
+			return render_template('delete.html')
 	else:
-		return render_template('createlist.html')
+		return render_template('delete.html')
 
 
-@app.route('/createlist', methods=['GET','POST'])
-@login_required
+@app.route('/edit', methods=['GET','POST'])
 def editlist():
 	if request.method == 'POST':
 		list_name = request.form['list_name']
+		new_list_name = request.form["new_list_name"]
 
-		msg = createlist_object.edit(list_name)
+		msg = createlist_object.edit(list_name, new_list_name)
+		print msg
 
-		if msg == "List Edited":
+		if msg == "List Edited Successfully":
 			return render_template('createlist.html')
 		else:
-			return render_template('createlist.html')
+			return render_template('edit.html')
 	else:
-		return render_template('createlist.html')
+		return render_template('edit.html')
 
 
+	
+
+@app.route('/logout')
+def logout():
+	session.pop('username', None)
+	return render_template("index.html")
 
