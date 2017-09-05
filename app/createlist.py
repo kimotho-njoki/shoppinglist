@@ -31,6 +31,26 @@ class UpdateLists:
 		else:
 			return "List Not Found"
 
+	def view(self):
+		return "All Lists Created"
+
+	def additem(self, list_name, itemname):
+		if list_name in self.myLists:
+			self.myLists[list_name].append(itemname)
+			return "Item Added Successfully"
+		else:
+			return "Item Not Added"
+
+	def deleteitem(self, list_name, itemname):
+		if list_name in self.myLists:
+			value = self.myLists[list_name].index(itemname)
+			del self.myLists[list_name][value]
+			return "Item Deleted Successfully"
+		else:
+			return "Item Not Deleted"
+
+
+
 
 
 

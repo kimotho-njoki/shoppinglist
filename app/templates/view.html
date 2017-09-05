@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="row">
+<div class="col-md-12">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-list"></span>
+<div class="pull-right action-buttons">
+<div class="btn-group pull-right"></div>
+</div>
+</div>
+{% for key in userlists.iterkeys() %}
+<div class="panel-body">
+<ul class="list-group">
+<li class="list-group-item">
+<div class="checkbox">
+<input type="checkbox" id="checkbox" />
+<label for="checkbox">
+<a href="#"><button type="button"> {{ key }} </button></a>
+</label>
+</div>
+<div class="pull-right action-buttons">
+<a href="/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="/delete" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+<div class="link">
+<a href="/additem"> Add Item </a><br><br>
+<a href="/deleteitem"> Delete Item </a>
+</div>
+
+
+{% endblock %}

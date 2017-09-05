@@ -131,3 +131,7 @@ ul li
 	padding: 5px;
 	margin-left: 5px;
 }
+.navbar-default
+{
+	background-color: blue;
+}

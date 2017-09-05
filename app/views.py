@@ -68,7 +68,7 @@ def createlist():
 		msg = createlist_object.create(list_name)
 
 		if msg == "List Created Successfully":
-			return render_template('additem.html')
+			return render_template('createlist.html')
 		else:
 			return render_template('create.html')
 	else:
@@ -107,6 +107,52 @@ def editlist():
 			return render_template('edit.html')
 	else:
 		return render_template('edit.html')
+
+@app.route('/view', methods=['GET','POST'])
+def viewlist():
+
+	msg = createlist_object.view()
+	print msg
+	if msg == "All Lists Created":
+		return render_template('view.html', userlists=createlist_object.myLists)
+		print (userlists)
+	else:
+		return render_template('createlist.html')
+
+
+@app.route('/additem', methods=['GET','POST'])
+def itemadd():
+	if request.method == 'POST':
+		list_name = request.form['list_name']
+		itemname = request.form["itemname"]
+
+		msg = createlist_object.additem(list_name, itemname)
+		print msg
+
+		if msg == "Item Added Successfully":
+			return render_template('view.html', userlists=createlist_object.myLists)
+		else:
+			return render_template('additem.html')
+	else:
+		return render_template('additem.html')
+
+
+@app.route('/deleteitem', methods=['GET','POST'])
+def itemdel():
+	if request.method == 'POST':
+		list_name = request.form['list_name']
+		itemname = request.form["itemname"]
+
+		msg = createlist_object.deleteitem(list_name, itemname)
+		print msg
+
+		if msg == "Item Deleted Successfully":
+			return render_template('view.html', userlists=createlist_object.myLists)
+		else:
+			return render_template('deleteitem.html')
+	else:
+		return render_template('deleteitem.html')
+		
 
 
 	
