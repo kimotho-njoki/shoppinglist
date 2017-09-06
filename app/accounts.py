@@ -15,7 +15,7 @@ class User:
 			return "Account does not exist. Please Register."
 		
 
-	def register(self, username, email, password, repassword):
+	def Register(self, username, email, password, repassword):
 		if re.match("^[a-zA-Z0-9 _]*$", username):
 			if username in self.user_details:
 				return "Username already exists"

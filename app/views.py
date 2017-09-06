@@ -30,13 +30,13 @@ def register():
 		email = request.form['email']
 		repassword = request.form['repwd']
 
-		msg = acc_object.register(username, email, password, repassword)
+		msg = acc_object.Register(username, email, password, repassword)
 
 		if msg == "Successfully signed up. You can now LogIn.":
 			flash("Successfully signed up. You can now LogIn.")
 			return render_template('login.html')
 		else:
-			flash("Registration Not Successful. Please Sign Up Again")
+			flash("Registration Not Successful. Please ensure you fill all fields.", "error")
 			return render_template('registration.html')
 	else:
 		return render_template('registration.html')
@@ -55,7 +55,7 @@ def login():
 			flash("Successfully Logged In")
 			return render_template('createlist.html')
 		else:
-			flash("LogIn Unsuccessfull. Please Confirm Details.")
+			flash("LogIn Unsuccessfull. Please confirm details and fill in each field.", "error")
 			return render_template('login.html')
 	else:
 		return render_template('login.html')
@@ -92,10 +92,10 @@ def deletelist():
 			flash("Shoppinglist Deleted Successfully")
 			return render_template('view.html', userlists=createlist_object.myLists)
 		else:
-			flash("Shoppinglist Yet To Be Deleted")
-			return render_template('delete.html')
+			flash("Shoppinglist Yet To Be Deleted. Please input the correct shoppinglist name.", "error")
+			return render_template('viewitem.html')
 	else:
-		return render_template('delete.html')
+		return render_template('viewitem.html')
 
 
 @app.route('/edit', methods=['GET','POST'])
@@ -110,7 +110,7 @@ def editlist():
 			flash("Shoppinglist Edited Successfully")
 			return render_template('view.html', userlists=createlist_object.myLists)
 		else:
-			flash("Shoppinglist Editing Failed")
+			flash("Shoppinglist Editing Failed. PLease input the correct shoppinglist name and do not use special characters in the new name.", "error")
 			return render_template('edit.html')
 	else:
 		return render_template('edit.html')
@@ -158,7 +158,7 @@ def itemadd(list_name):
 			userlists=createlist_object.myLists
 			return render_template('view.html', userlists=userlists)
 		else:
-			flash("Item Adding Failed. Please Try Again.")
+			flash("Item Adding Failed. Please try again and do not add any special characters to the name.", "error")
 			return redirect(url_for('viewitem'))
 	else:
 		return render_template('additem.html', list_name=list_name)
@@ -174,7 +174,7 @@ def itemdel(list_name, item_name):
 			flash("Item Deleted Successfully")
 			return render_template('view.html', userlists=createlist_object.myLists)
 		else:
-			flash("Item Not Deleted. Please Try Again.")
+			flash("Item Not Deleted. Please Try Again.", "error")
 			return redirect(url_for('view.html'))
 		
 
@@ -191,7 +191,7 @@ def createownlist():
 			userlists=createlist_object.myLists
 			return render_template('view.html', userlists=userlists)
 		else:
-			flash("Shoppinglist Yet To Be Created")
+			flash("Shoppinglist Yet To Be Created. Please try again and do not include any special characters in the shoppinglist name.", "error")
 			return render_template('createown.html')
 	else:
 		return render_template('createown.html')

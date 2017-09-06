@@ -3,10 +3,10 @@
 
 {% block content %}
 
-<h2 style="color: grey;"> Create Your List </h2>
+<h2 style="color: grey; padding-top: 70px; text-align: center;"> Create Your Shoppinglist </h2>
 <hr>
 
-<form action="/createlist" method="POST">
+<form action="/createlist" method="POST" style="padding-left: 150px;">
 <input type="button" class= "btn btn-primary" value="Choose From Catalog" onclick="window.location.href='/create'">
 <input type="button" class= "btn btn-primary" value="Create Own Shoppinglist" onclick="window.location.href='/createown'">
 <input type="button" class= "btn btn-primary" value="Edit Shoppinglist Name" onclick="window.location.href='/edit'">

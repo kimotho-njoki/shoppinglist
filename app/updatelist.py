@@ -6,7 +6,7 @@ class UpdateLists:
 		
 		self.myLists = {}
 	
-    
+# create shopping list by choosing from catalog    
 	def create(self, list_name):
 		if list_name in self.all_catalogs:
 			self.myLists[list_name] = self.all_catalogs[list_name]
@@ -14,6 +14,7 @@ class UpdateLists:
 		else: 
 			return "Catalog Not Found"
 
+# create your own shopping list
 	def create_own(self, list_name):
 		if re.match("^[a-zA-Z0-9 _]*$", list_name):
 			own_items = []

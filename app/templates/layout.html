@@ -4,9 +4,10 @@
 <head>
 <title> Shopping List App </title>
 <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='flashstyle.css')}}">
 </head>
 
-<body>
+<body style="background-image: url(https://unsplash.it/1400/795?image=733)">
 <div class="navbar navbar-default navbar-static-top" role="navigation">
 <div class="container">
 <div class="navbar-header">
@@ -35,11 +36,11 @@
 
 <div class="container">
 
-{% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 <ul class="flashes">
-{% for messages in messages %}
-<li> <h4> {{messages}} </h4> </li>
+{% for category, message in messages %}
+<li class="{{category}}"> <h4> {{message}} </h4> </li>
 {% endfor %}
 </ul>
 {% endif %}
