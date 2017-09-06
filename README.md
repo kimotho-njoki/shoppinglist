@@ -2,27 +2,27 @@
 Shoppinglist is a repository for a ShoppingList App project. The application makes it easier for users to create shopping lists without the need for pen and paper. One can make edits on the list, delete lists, add items as well as delete items from the list.
 
 # Installation procedure
-Clone this repository:
-**https://github.com/kimotho-njoki/shoppinglist.git
+Clone this repository:<br>
+*https://github.com/kimotho-njoki/shoppinglist.git
 
-Navigate to the downloaded repository:
-**$ cd project_folder
+Navigate to the downloaded repository:<br>
+*$ cd project_folder
 
-Install a virtual environment:
-**$ pip install virtualenv
+Install a virtual environment:<br>
+*$ pip install virtualenv<br>
 
-Test your virtualenv:
-**$ vitualenv --version
+Test your virtualenv:<br>
+*$ vitualenv --version<br>
 
-Create your virtual environment:
-**$ cd project_folder
-**$ virtualenv yourenvname
+Create your virtual environment:<br>
+*$ cd project_folder<br>
+*$ virtualenv yourenvname<br>
 
-Activate your virtual environment:
-**$ source yourenvname/bin/activate
+Activate your virtual environment:<br>
+*$ source yourenvname/bin/activate<br>
 
-Install requirements:
-**$ (yourenvname) pip install -r requirements.txt
+Install requirements:<br>
+*$ (yourenvname) pip install -r requirements.txt<br>
 
 # Running the application
 $ (yourenvname) python run.py
