@@ -1,3 +1,5 @@
+import re
+
 class User:
 	def __init__(self):
 		self.user_details = {'grace':'welcome'}
@@ -14,14 +16,17 @@ class User:
 		
 
 	def register(self, username, email, password, repassword):
-		if username in self.user_details:
-			return "Username already exists"
-		else:
-			if len(password) < 6:
-				return "Password too short"
+		if re.match("^[a-zA-Z0-9 _]*$", username):
+			if username in self.user_details:
+				return "Username already exists"
 			else:
-				self.user_details[username] = password
-				self.extra_details[username] = [email, repassword]
-				return "Successfully signed up. You can now LogIn."
+				if len(password) < 6 or password != repassword:
+					return "Password Invalid"
+				else:
+					self.user_details[username] = password
+					self.extra_details[username] = [email, repassword]
+					return "Successfully signed up. You can now LogIn."
+		else:
+			return "Username Invalid"
 
 					

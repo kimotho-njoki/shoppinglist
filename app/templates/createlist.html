@@ -7,10 +7,11 @@
 <hr>
 
 <form action="/createlist" method="POST">
-<input type="button" value="Create New list" onclick="window.location.href='/create'">
-<input type="button" value="Update list" onclick="window.location.href='/edit'">
-<input type="button" value="Delete list" onclick="window.location.href='/delete'">
-<input type="button" value="View lists" onclick="window.location.href='/view'">
+<input type="button" class= "btn btn-primary" value="Choose From Catalog" onclick="window.location.href='/create'">
+<input type="button" class= "btn btn-primary" value="Create Own Shoppinglist" onclick="window.location.href='/createown'">
+<input type="button" class= "btn btn-primary" value="Edit Shoppinglist Name" onclick="window.location.href='/edit'">
+<input type="button" class= "btn btn-primary" value="Delete Shoppinglist" onclick="window.location.href='/delete'">
+<input type="button" class= "btn btn-primary" value="View All Shoppinglists" onclick="window.location.href='/view'">
 </form>
 
 {% endblock %}

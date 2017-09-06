@@ -4,13 +4,8 @@
 {% block content %}
 
 <div class="col-md-12">
-<form action="/additem" method="POST">
+<form action="/additem/{{list_name}}" method="POST">
 <table class='table table-hover table-responsive table-bordered'>
- 
- <tr>
-<td> List name </td>
-<td> <input type="text" name="list_name" class="form-control"> </td>
-</tr>
 
 <tr>
 <td> Item name </td>

@@ -1,3 +1,4 @@
+import re
 
 class UpdateLists:
 	def __init__(self):
@@ -15,7 +16,15 @@ class UpdateLists:
 		else: 
 			return "Catalog Not Found"
 
-	
+	def create_own(self, list_name):
+		if re.match("^[a-zA-Z0-9 _]*$", list_name):
+			own_items = []
+			self.myLists[list_name] = own_items
+			return "Own List Created"
+		else:
+			print "Shopping List Name Invalid"
+
+
 	def delete(self, list_name):
 		if list_name in self.myLists:
 			del self.myLists[list_name]
@@ -31,15 +40,21 @@ class UpdateLists:
 		else:
 			return "List Not Found"
 
-	def view(self):
+	def view(self): 
 		return "All Lists Created"
 
-	def additem(self, list_name, itemname):
-		if list_name in self.myLists:
-			self.myLists[list_name].append(itemname)
-			return "Item Added Successfully"
+	def viewitem(self):
+		return "All Items Added"
+
+	def additem(self, list_name, item_name):
+		if re.match("^[a-zA-Z0-9 _]*$", item_name):
+			if list_name in self.myLists:
+				self.myLists[list_name].append(item_name)
+				return "Item Added Successfully"
+			else:
+				return "Item Not Added"
 		else:
-			return "Item Not Added"
+			return "Item Name Invalid"
 
 	def deleteitem(self, list_name, itemname):
 		if list_name in self.myLists:
