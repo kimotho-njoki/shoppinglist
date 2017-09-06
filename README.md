@@ -3,26 +3,26 @@ Shoppinglist is a repository for a ShoppingList App project. The application mak
 
 # Installation procedure
 Clone this repository:<br>
-*https://github.com/kimotho-njoki/shoppinglist.git
+https://github.com/kimotho-njoki/shoppinglist.git
 
 Navigate to the downloaded repository:<br>
-*$ cd project_folder
+$ cd project_folder
 
 Install a virtual environment:<br>
-*$ pip install virtualenv<br>
+$ pip install virtualenv<br>
 
 Test your virtualenv:<br>
-*$ vitualenv --version<br>
+$ vitualenv --version<br>
 
 Create your virtual environment:<br>
-*$ cd project_folder<br>
-*$ virtualenv yourenvname<br>
+$ cd project_folder<br>
+$ virtualenv yourenvname<br>
 
 Activate your virtual environment:<br>
-*$ source yourenvname/bin/activate<br>
+$ source yourenvname/bin/activate<br>
 
 Install requirements:<br>
-*$ (yourenvname) pip install -r requirements.txt<br>
+$ (yourenvname) pip install -r requirements.txt<br>
 
 # Running the application
 $ (yourenvname) python run.py
