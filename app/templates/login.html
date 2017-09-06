@@ -2,31 +2,29 @@
 
 
 {% block content %}
-<div class="col-md-12">
+<div class="col-md-12" style="padding-top: 100px;">
 <form action="/login" method="POST">
 <table class='table table-hover table-responsive table-bordered'>
  
 <tr>
-<td> Username </td>
+<td style="color: purple;"> Username </td>
 <td> <input type="text" name="username" class="form-control"> </td>
 </tr>
  
 <tr>
-<td> Password </td>
+<td style="color: purple;"> Password </td>
 <td> <input type="Password" name="pwd" class="form-control"> </td>
 </tr>
  
  
 <tr>
 <td></td>
-<td> <input type="submit" value="Log In"> </td>
+<td style="color: purple;"> <input type="submit" value="Log In"> </td>
 </tr>
  
 </table>
 </form>
 </div>
-
-<input type="checkbox" name="recall" value="Remember me"> Remember me <br><br>
 
 
 {% endblock %}

@@ -1,5 +1,5 @@
 import unittest
-from app.accounts import User
+from accounts import User
 
 class TestAccounts(unittest.TestCase):
 	"""
@@ -23,7 +23,7 @@ class TestAccounts(unittest.TestCase):
 
 	def test_failed_LogIn(self):
 		result = self.acc.LogIn('betty', 'beatrice')
-		self.assertEqual(result, "Account does not exist. Please Register")
+		self.assertEqual(result, "Account does not exist. Please Register.")
 
 	def test_incorrect_pwd(self):
 		result = self.acc.LogIn('grace', 'emphasis')
@@ -39,7 +39,7 @@ class TestAccounts(unittest.TestCase):
 
 	def test_short_pwd(self):
 		result = self.acc.register('hanah', 'hanah@gmail.com', 'hey', 'hey')
-		self.assertEqual(result, "Password too short")
+		self.assertEqual(result, "Password Invalid")
 
 if __name__ == '__main__':
 	unittest.main()

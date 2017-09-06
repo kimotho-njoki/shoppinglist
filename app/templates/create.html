@@ -8,13 +8,20 @@
 <table class='table table-hover table-responsive table-bordered'>
  
 <tr>
-<td> Shoppinglist Name </td>
-<td> <input type="text" name="list_name" class="form-control"> </td>
+<td style="color: purple;"> Shoppinglist Name </td>
+
+<td> 
+<select id="catalog" name="catalog">
+{% for key in default_lists.iterkeys() %}
+<option value="{{key}}">{{key}}</option>
+{% endfor %}
+</select>
+</td>
 </tr>
 
 <tr>
 <td></td>
-<td> <input type="submit" value="Submit"> </td>
+<td style="color: purple;"> <input type="submit" value="Submit"> </td>
 </tr>
 
 </table>

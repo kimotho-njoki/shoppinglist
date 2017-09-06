@@ -3,7 +3,6 @@ from functools import wraps
 from app import app, acc_object, createlist_object
 
 
-#custom decorator
 def login_required(f):
 	@wraps(f)
 	def decorated_function(*args, **kwargs):
@@ -62,25 +61,25 @@ def login():
 		return render_template('login.html')
 
 
+@app.route('/create', methods=['GET', 'POST'])
+def create_default_list():
+	"""
+	Create shopping list from catalog
+	"""
 
+	default_lists = createlist_object.all_catalogs
 
-@app.route('/create', methods=['GET','POST'])
-def createlist():
 	if request.method == 'POST':
-		list_name = request.form['list_name']
+		select_value = request.form.get('catalog')
 
-		msg = createlist_object.create(list_name)
+		msg = createlist_object.create(select_value)
 
 		if msg == "List Created Successfully":
 			flash("Shoppinglist Created Successfully")
 			return render_template('view.html', userlists=createlist_object.myLists)
-		else:
-			flash("Shoppinglist Not Created")
-			return render_template('create.html')
-	else:
-		return render_template('create.html')
-
-
+			
+	return render_template('create.html', default_lists=default_lists)
+		
 
 @app.route('/delete', methods=['GET','POST'])
 def deletelist():
@@ -111,6 +110,7 @@ def editlist():
 			flash("Shoppinglist Edited Successfully")
 			return render_template('view.html', userlists=createlist_object.myLists)
 		else:
+			flash("Shoppinglist Editing Failed")
 			return render_template('edit.html')
 	else:
 		return render_template('edit.html')
@@ -154,9 +154,11 @@ def itemadd(list_name):
 		msg = createlist_object.additem(list_name, itemname)
 
 		if msg == "Item Added Successfully":
+			flash("Item Added Successfully")
 			userlists=createlist_object.myLists
 			return render_template('view.html', userlists=userlists)
 		else:
+			flash("Item Adding Failed. Please Try Again.")
 			return redirect(url_for('viewitem'))
 	else:
 		return render_template('additem.html', list_name=list_name)
@@ -169,8 +171,10 @@ def itemdel(list_name, item_name):
 		msg = createlist_object.deleteitem(list_name, item_name)
 
 		if msg == "Item Deleted Successfully":
+			flash("Item Deleted Successfully")
 			return render_template('view.html', userlists=createlist_object.myLists)
 		else:
+			flash("Item Not Deleted. Please Try Again.")
 			return redirect(url_for('view.html'))
 		
 

@@ -20,7 +20,7 @@ class User:
 			if username in self.user_details:
 				return "Username already exists"
 			else:
-				if len(password) < 6 or password != repassword:
+				if len(password) < 6 or password != repassword or password == '' or repassword=='':
 					return "Password Invalid"
 				else:
 					self.user_details[username] = password

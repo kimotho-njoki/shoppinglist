@@ -2,11 +2,9 @@ import re
 
 class UpdateLists:
 	def __init__(self):
-		#dictionary holds all catalogs, each holds a list with items
 		self.all_catalogs = {"grocery":["meat","fruits"], "cloths":["shirt","trouser"]}
-		#dictionary of all the users shoppinglists
-		self.myLists = {"grocery":["meat","fruits"], "cloths":["shirt","trouser"]}
 		
+		self.myLists = {}
 	
     
 	def create(self, list_name):
@@ -43,9 +41,11 @@ class UpdateLists:
 	def view(self): 
 		return "All Lists Created"
 
+	
 	def viewitem(self):
 		return "All Items Added"
 
+	
 	def additem(self, list_name, item_name):
 		if re.match("^[a-zA-Z0-9 _]*$", item_name):
 			if list_name in self.myLists:
@@ -56,6 +56,7 @@ class UpdateLists:
 		else:
 			return "Item Name Invalid"
 
+	
 	def deleteitem(self, list_name, itemname):
 		if list_name in self.myLists:
 			value = self.myLists[list_name].index(itemname)
