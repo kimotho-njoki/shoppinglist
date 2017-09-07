@@ -1,5 +1,5 @@
 import unittest
-from updatelist import UpdateLists
+from app.updatelist import UpdateLists
 
 class TestLists(unittest.TestCase):
 	"""
