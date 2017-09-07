@@ -12,17 +12,17 @@ class User(object):
             else:
                 return "Incorrect Password"
         else:
-            return "Account does not exist. Please Register."	
+            return "Account does not exist. Please Register."   
     def Register(self, username, email, password, repassword):
         if re.match("^[a-zA-Z0-9 _]*$", username):
-			if username in self.user_details:
-				return "Username already exists"
-			else:
-				if len(password) < 6 or password != repassword or password == '' or repassword == '':
-					return "Password Invalid"
-				else:
-					self.user_details[username] = password
-					self.extra_details[username] = [email, repassword]
-					return "Successfully signed up. You can now LogIn."
+            if username in self.user_details:
+                return "Username already exists"
+            else:
+                if len(password) < 6 or password != repassword or password == '' or repassword == '':
+                    return "Password Invalid"
+                else:
+                    self.user_details[username] = password
+                    self.extra_details[username] = [email, repassword]
+                    return "Successfully signed up. You can now LogIn."
         else:
-			return "Username Invalid"
+            return "Username Invalid"
