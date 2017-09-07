@@ -36,7 +36,7 @@ def register():
             flash("Successfully signed up. You can now LogIn.")
             return render_template('login.html')
         else:
-            flash("Registration Not Successful. Please ensure you fill all fields.", "error")
+            flash(msg, "error")
             return render_template('registration.html')
     else:
         return render_template('registration.html')
@@ -55,7 +55,7 @@ def login():
             flash("Successfully Logged In")
             return render_template('createlist.html')
         else:
-            flash("LogIn Unsuccessfull. Please confirm details and fill in each field.", "error")
+            flash(msg, "error")
             return render_template('login.html')
     else:
         return render_template('login.html')
@@ -74,7 +74,7 @@ def create_default_list():
 
         msg = createlist_object.create(select_value)
 
-        if msg == "List Created Successfully":
+        if msg == "Shoppinglist Created Successfully":
             flash("Shoppinglist Created Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
             
@@ -88,7 +88,7 @@ def deletelist():
 
         msg = createlist_object.delete(list_name)
 
-        if msg == "List Successfully Deleted":
+        if msg == "Shoppinglist Successfully Deleted":
             flash("Shoppinglist Deleted Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
         else:
@@ -106,7 +106,7 @@ def editlist():
 
         msg = createlist_object.edit(list_name, new_list_name)
 
-        if msg == "List Edited Successfully":
+        if msg == "Shoppinglist Edited Successfully":
             flash("Shoppinglist Edited Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
         else:
@@ -122,7 +122,7 @@ def viewlist():
 
     msg = createlist_object.view()
     
-    if msg == "All Lists Created":
+    if msg == "All Shoppinglists Created":
         return render_template('view.html', userlists=createlist_object.myLists)
     else:
         return render_template('createlist.html')
@@ -186,7 +186,7 @@ def createownlist():
 
         msg = createlist_object.create_own(list_name)
 
-        if msg == "Own List Created":
+        if msg == "Own Shoppinglist Created":
             flash("Own Shoppinglist Created Successfully")
             userlists=createlist_object.myLists
             return render_template('view.html', userlists=userlists)
