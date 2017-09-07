@@ -1,29 +1,37 @@
+"""
+defining routes
+"""
 from flask import render_template, request, session, url_for, flash, redirect
 from functools import wraps
 from app import app, acc_object, createlist_object
 
-
 def login_required(f):
+    """
+    custom decorator
+    """
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        """
+        custom decorator to ensure user is logged in to view pages
+        """
         if "username" in session:
             return f(*args, **kwargs)
-        else:
-            msg = "You are not logged in"
-            return render_template('index.html', resp=msg)
-            
+        msg = "You are not logged in"
+        return render_template('index.html', resp=msg)
     return decorated_function
-
-
 
 @app.route('/')
 def home():
+    """
+    redirects user to the home page
+    """
     return render_template('index.html')
 
-
-
-@app.route('/registration', methods=['GET','POST'])
+@app.route('/registration', methods=['GET', 'POST'])
 def register():
+    """
+    redirects user to the registration page
+    """
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['pwd']
@@ -35,16 +43,15 @@ def register():
         if msg == "Successfully signed up. You can now LogIn.":
             flash("Successfully signed up. You can now LogIn.")
             return render_template('login.html')
-        else:
-            flash(msg, "error")
-            return render_template('registration.html')
-    else:
+        flash(msg, "error")
         return render_template('registration.html')
-
-
+    return render_template('registration.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    redirects the user to the login page
+    """
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['pwd']
@@ -54,12 +61,9 @@ def login():
         if msg == "Successfully Logged In":
             flash("Successfully Logged In")
             return render_template('createlist.html')
-        else:
-            flash(msg, "error")
-            return render_template('login.html')
-    else:
+        flash(msg, "error")
         return render_template('login.html')
-
+    return render_template('login.html')
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_default_list():
@@ -77,12 +81,13 @@ def create_default_list():
         if msg == "Shoppinglist Created Successfully":
             flash("Shoppinglist Created Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
-            
     return render_template('create.html', default_lists=default_lists)
-        
 
-@app.route('/delete', methods=['GET','POST'])
+@app.route('/delete', methods=['GET', 'POST'])
 def deletelist():
+    """
+    redirects user to the viewing page after deletion is complete
+    """
     if request.method == 'POST':
         list_name = request.form['list_name']
 
@@ -91,15 +96,16 @@ def deletelist():
         if msg == "Shoppinglist Successfully Deleted":
             flash("Shoppinglist Deleted Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
-        else:
-            flash("Shoppinglist Yet To Be Deleted. Please input the correct shoppinglist name.", "error")
-            return render_template('viewitem.html')
-    else:
+        flash("Shoppinglist Yet To Be Deleted. Please input the correct shoppinglist name."\
+            , "error")
         return render_template('viewitem.html')
+    return render_template('viewitem.html')
 
-
-@app.route('/edit', methods=['GET','POST'])
+@app.route('/edit', methods=['GET', 'POST'])
 def editlist():
+    """
+    redirects user to the viewing page after editing is complete
+    """
     if request.method == 'POST':
         list_name = request.form['list_name']
         new_list_name = request.form["new_list_name"]
@@ -109,29 +115,27 @@ def editlist():
         if msg == "Shoppinglist Edited Successfully":
             flash("Shoppinglist Edited Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
-        else:
-            flash("Shoppinglist Editing Failed. PLease input the correct shoppinglist name and do not use special characters in the new name.", "error")
-            return render_template('edit.html')
-    else:
+        flash("Shoppinglist Editing Failed. \
+            PLease input the correct shoppinglist name and do not use \
+            special characters in the new name.", "error")
         return render_template('edit.html')
+    return render_template('edit.html')
 
-
-
-@app.route('/view', methods=['GET','POST'])
+@app.route('/view', methods=['GET', 'POST'])
 def viewlist():
-
+    """
+    redirects user to the viewing page
+    """
     msg = createlist_object.view()
-    
     if msg == "All Shoppinglists Created":
         return render_template('view.html', userlists=createlist_object.myLists)
-    else:
-        return render_template('createlist.html')
+    return render_template('createlist.html')
 
-
-
-
-@app.route('/viewitem/<list_name>', methods=['GET','POST'])
+@app.route('/viewitem/<list_name>', methods=['GET', 'POST'])
 def viewitem(list_name):
+    """
+    redirects user to view all items added to shoppinglist
+    """
 
     msg = createlist_object.viewitem()
 
@@ -141,12 +145,13 @@ def viewitem(list_name):
 
     if msg == "All Items Added":
         return render_template('viewitem.html', list_items=list_items, list_name=list_name)
-    else:
-        return render_template('createlist.html')
+    return render_template('createlist.html')
 
-
-@app.route('/additem/<list_name>', methods=['GET','POST'])
+@app.route('/additem/<list_name>', methods=['GET', 'POST'])
 def itemadd(list_name):
+    """
+    redirects user to the viewing page after adding items
+    """
     if request.method == 'POST':
 
         itemname = request.form["itemname"]
@@ -155,17 +160,18 @@ def itemadd(list_name):
 
         if msg == "Item Added Successfully":
             flash("Item Added Successfully")
-            userlists=createlist_object.myLists
+            userlists = createlist_object.myLists
             return render_template('view.html', userlists=userlists)
-        else:
-            flash("Item Adding Failed. Please try again and do not add any special characters to the name.", "error")
-            return redirect(url_for('viewitem'))
-    else:
-        return render_template('additem.html', list_name=list_name)
-
+        flash("Item Adding Failed. Please try again \
+            and do not add any special characters to the name.", "error")
+        return redirect(url_for('viewitem'))
+    return render_template('additem.html', list_name=list_name)
 
 @app.route('/deleteitem/<list_name>/<item_name>', methods=['POST'])
 def itemdel(list_name, item_name):
+    """
+    redirects user to the viewing page after item deletion is complete
+    """
     if request.method == 'POST':
 
         msg = createlist_object.deleteitem(list_name, item_name)
@@ -173,14 +179,14 @@ def itemdel(list_name, item_name):
         if msg == "Item Deleted Successfully":
             flash("Item Deleted Successfully")
             return render_template('view.html', userlists=createlist_object.myLists)
-        else:
-            flash("Item Not Deleted. Please Try Again.", "error")
-            return redirect(url_for('view.html'))
-        
+        flash("Item Not Deleted. Please Try Again.", "error")
+        return redirect(url_for('view.html'))
 
-
-@app.route('/createown', methods=['GET','POST'])
+@app.route('/createown', methods=['GET', 'POST'])
 def createownlist():
+    """
+    redirects user to the viewing page after creating a shoppinglist from the catalog
+    """
     if request.method == 'POST':
         list_name = request.form['list_name']
 
@@ -188,19 +194,18 @@ def createownlist():
 
         if msg == "Own Shoppinglist Created":
             flash("Own Shoppinglist Created Successfully")
-            userlists=createlist_object.myLists
+            userlists = createlist_object.myLists
             return render_template('view.html', userlists=userlists)
-        else:
-            flash("Shoppinglist Yet To Be Created. Please try again and do not include any special characters in the shoppinglist name.", "error")
-            return render_template('createown.html')
-    else:
+        flash("Shoppinglist Yet To Be Created. \
+            Please try again and do not include any \
+            special characters in the shoppinglist name.", "error")
         return render_template('createown.html')
-
-
-    
+    return render_template('createown.html')
 
 @app.route('/logout')
 def logout():
+    """
+    redirects user to the home page after logging out
+    """
     flash("You Are Now Logged Out. Come Again.")
     return render_template("index.html")
-
