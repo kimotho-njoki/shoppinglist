@@ -16,7 +16,7 @@ class TestLists(unittest.TestCase):
 
     def test_namein_catalog(self):
         result = self.shoplist.create("grocery")
-        self.assertEqual(result, "List Created Successfully")
+        self.assertEqual(result, "Shoppinglist Created Successfully")
 
     def test_notin_catalog(self):
         result = self.shoplist.create("bags")
@@ -28,7 +28,7 @@ class TestLists(unittest.TestCase):
 
     def test_correct_name(self):
         result = self.shoplist.create_own("soaps")
-        self.assertEqual(result, "Own List Created")
+        self.assertEqual(result, "Own Shoppinglist Created")
 
 if __name__ == '__main__':
     unittest.main()
