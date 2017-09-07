@@ -1,6 +1,6 @@
 import re
 
-class UpdateLists:
+class UpdateLists(object):
 	def __init__(self):
 		self.all_catalogs = {"grocery":["meat","fruits"], "cloths":["shirt","trouser"]}
 		

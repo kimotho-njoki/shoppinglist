@@ -1,6 +1,6 @@
 import re
 
-class User:
+class User(object):
     def __init__(self):
         self.user_details = {'grace':'welcome'}
         self.extra_details = {}
