@@ -43,7 +43,7 @@ class TestLists(unittest.TestCase):
         tests the use of unauthorized characters in shoppinglist name
         """
         result = self.shoplist.create_own(".#")
-        self.assertEqual(result, None)
+        self.assertEqual(result, "Shopping List Name Invalid")
 
     def test_correct_name(self):
         """

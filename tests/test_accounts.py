@@ -45,7 +45,7 @@ class TestAccounts(unittest.TestCase):
         test for incorrect password used
         """
         result = self.account_object.LogIn('grace', 'emphasis')
-        self.assertEqual(result, "Incorrect Password")
+        self.assertEqual(result, "Password Either Incorrect Or Empty")
 
     def test_success_registration(self):
         """
@@ -66,7 +66,7 @@ class TestAccounts(unittest.TestCase):
         test for short password used
         """
         result = self.account_object.Register('hanah', 'hanah@gmail.com', 'hey', 'hey')
-        self.assertEqual(result, "Password Invalid")
+        self.assertEqual(result, "Password Either Too Short Or Empty")
 
 if __name__ == '__main__':
     unittest.main()
