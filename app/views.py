@@ -81,21 +81,20 @@ def deletelist(list_name):
 
         msg = createlist_object.delete(list_name)
 
-        if msg == "List Successfully Deleted":
-            flash("Shoppinglist Deleted Successfully")
+        if msg == "Shoppinglist Successfully Deleted":
+            flash("Shoppinglist Successfully Deleted")
             return render_template('createlist.html', userlists=createlist_object.myLists)
         else:
             flash("Shoppinglist Yet To Be Deleted. Please input the correct shoppinglist name.", "error")
             return render_template('view.html', list_name=list_name)
 
 
-@app.route('/edit', methods=['GET', 'POST'])
-def editlist():
+@app.route('/edit/<list_name>', methods=['GET','POST'])
+def editlist(list_name):
     """
     redirects user to the viewing page after editing is complete
     """
     if request.method == 'POST':
-        list_name = request.form['list_name']
         new_list_name = request.form["new_list_name"]
 
         msg = createlist_object.edit(list_name, new_list_name)
@@ -106,8 +105,8 @@ def editlist():
         flash("Shoppinglist Editing Failed. \
             PLease input the correct shoppinglist name and do not use \
             special characters in the new name.", "error")
-        return render_template('edit.html')
-    return render_template('edit.html')
+        return render_template('edit.html', list_name=list_name)
+    return render_template('edit.html', list_name=list_name)
 
 @app.route('/view', methods=['GET', 'POST'])
 def viewlist():
