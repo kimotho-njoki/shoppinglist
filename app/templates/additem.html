@@ -2,19 +2,20 @@
 
 
 {% block content %}
-
-<div class="col-md-12">
+<h2 style="color: white; padding-top: 70px; font-weight: bold;"> Type In Name Of Item </h2>
+<hr>
+<div class="col-md-10" style="padding-top: 160px; padding-left: 300px;">
 <form action="/additem/{{list_name}}" method="POST">
 <table class='table table-hover table-responsive table-bordered'>
 
 <tr>
-<td style="color: purple;"> Item name </td>
+<td style="color: purple; font-weight: bold; font-size: 17px;"> Item name </td>
 <td> <input type="text" name="itemname" class="form-control"> </td>
 </tr>
 
 <tr>
 <td></td>
-<td style="color: purple;"> <input type="submit" value="Submit"> </td>
+<td style="color: purple; font-weight: bold; font-size: 17px;"> <input type="submit" value="Submit"> </td>
 </tr>
 
 </table>

@@ -5,27 +5,16 @@ from flask import render_template, request, session, url_for, flash, redirect
 from functools import wraps
 from app import app, acc_object, createlist_object
 
-def login_required(f):
-    """
-    custom decorator
-    """
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        """
-        custom decorator to ensure user is logged in to view pages
-        """
-        if "username" in session:
-            return f(*args, **kwargs)
-        msg = "You are not logged in"
-        return render_template('index.html', resp=msg)
-    return decorated_function
-
 @app.route('/')
 def home():
     """
     redirects user to the home page
     """
     return render_template('index.html')
+
+@app.route('/createlist')
+def create_list():
+    return render_template('createlist.html')
 
 @app.route('/registration', methods=['GET', 'POST'])
 def register():
@@ -83,23 +72,22 @@ def create_default_list():
             return render_template('view.html', userlists=createlist_object.myLists)
     return render_template('create.html', default_lists=default_lists)
 
-@app.route('/delete', methods=['GET', 'POST'])
-def deletelist():
+@app.route('/delete/<list_name>', methods=['POST'])
+def deletelist(list_name):
     """
     redirects user to the viewing page after deletion is complete
     """
     if request.method == 'POST':
-        list_name = request.form['list_name']
 
         msg = createlist_object.delete(list_name)
 
-        if msg == "Shoppinglist Successfully Deleted":
+        if msg == "List Successfully Deleted":
             flash("Shoppinglist Deleted Successfully")
-            return render_template('view.html', userlists=createlist_object.myLists)
-        flash("Shoppinglist Yet To Be Deleted. Please input the correct shoppinglist name."\
-            , "error")
-        return render_template('viewitem.html')
-    return render_template('viewitem.html')
+            return render_template('createlist.html', userlists=createlist_object.myLists)
+        else:
+            flash("Shoppinglist Yet To Be Deleted. Please input the correct shoppinglist name.", "error")
+            return render_template('view.html', list_name=list_name)
+
 
 @app.route('/edit', methods=['GET', 'POST'])
 def editlist():

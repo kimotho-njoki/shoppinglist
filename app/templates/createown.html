@@ -2,24 +2,26 @@
 
 
 {% block content %}
-<h2 style="color: grey; padding-top: 70px;"> Create Your Own Shoppinglist </h2>
+<a href="/createlist" style="color: black; font-size: 18px; font-weight: bold; padding-left: 970px;"> View Previous Page </a>
+<h2 style="color: white; padding-top: 70px; font-weight: bold;"> Create Your Own Shoppinglist </h2>
 <hr>
-<div class="col-md-12" style="padding-top: 80px">
+<div class="col-md-11" style="padding-top: 140px; padding-left: 250px;">
 <form action="/createown" method="POST">
 <table class='table table-hover table-responsive table-bordered'>
  
 <tr>
-<td style="color: purple;"> Shoppinglist Name </td>
+<td style="color: purple; font-weight: bold; font-size: 17px;"> Shoppinglist Name </td>
 <td> <input type="text" name="list_name" class="form-control"> </td>
 </tr>
 
 <tr>
 <td></td>
-<td style="color: purple;"> <input type="submit" value="Submit"> </td>
+<td style="color: purple; font-weight: bold; font-size: 17px;"> <input type="submit" value="Submit"> </td>
 </tr>
 
 </table>
 </form>
+<a href="/create" style="color: purple; font-size: 17px; font-weight: bold;"> Choose From Catalog </a> | <a href="/view" style="color: purple; font-size: 17px; font-weight: bold;"> View Shoppinglists </a> | <a href="/edit" style="color: purple; font-size: 17px; font-weight: bold;"> Edit Shoppinglists </a> | <a href="/delete" style="color: purple; font-size: 17px; font-weight: bold;"> Delete Shoppinglists </a>
 </div>
 
 

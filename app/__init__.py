@@ -9,7 +9,4 @@ acc_object = accounts.User()
 createlist_object = updatelist.UpdateLists()
 
 from app import views
-
-# app.config.from_object('config')
-# app.config.from_pyfile('config.py')
  

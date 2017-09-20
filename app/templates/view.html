@@ -2,8 +2,9 @@
 
 
 {% block content %}
+<a href="/createlist" style="color: black; font-weight: bold; padding-left: 890px; font-size: 18px;"> Create Another Shoppinglist </a>
 <div class="row">
-<div class="col-md-12" style="padding-top: 70px">
+<div class="col-md-10" style="padding-top: 70px; padding-left: 100px;">
 <div class="panel panel-primary">
 <div class="panel-heading">
 <span class="glyphicon glyphicon-list"></span>
@@ -18,12 +19,12 @@
 <div class="checkbox">
 <input type="checkbox" id="checkbox" />
 <label for="checkbox">
-<a href="/viewitem/{{key}}" title="click to view items"><button type="button"> {{ key }} </button></a>
+<a href="/viewitem/{{key}}"><button type="button" title="Click To View Items"> {{ key }} </button></a>
 </label>
 </div>
 <div class="pull-right action-buttons">
 <a title="edit shoppinglist" href="/edit"><span class="glyphicon glyphicon-pencil"></span></a>
-<a title="delete shoppinglist" href="/delete" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+<a title="delete shoppinglist" href="/delete/{{list_name}}" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
 </div>
 </li>
 </ul>

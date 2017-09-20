@@ -3,15 +3,13 @@
 
 {% block content %}
 
-<h2 style="color: grey; padding-top: 70px; text-align: center;"> Create Your Shoppinglist </h2>
+<h2 style="color: black; padding-top: 250px; text-align: center; font-size: 40px; font-weight: bold;"> Create Your Shoppinglist </h2>
 <hr>
 
-<form action="/createlist" method="POST" style="padding-left: 150px;">
-<input type="button" class= "btn btn-primary" value="Choose From Catalog" onclick="window.location.href='/create'">
-<input type="button" class= "btn btn-primary" value="Create Own Shoppinglist" onclick="window.location.href='/createown'">
-<input type="button" class= "btn btn-primary" value="Edit Shoppinglist Name" onclick="window.location.href='/edit'">
-<input type="button" class= "btn btn-primary" value="Delete Shoppinglist" onclick="window.location.href='/delete'">
-<input type="button" class= "btn btn-primary" value="View All Shoppinglists" onclick="window.location.href='/view'">
+<form action="/createlist" method="POST" style="padding-left: 320px;">
+<input type="button" title="Lists With Pre-Added Items" style="background-color: purple;" class= "btn btn-primary" value="Choose From Catalog" onclick="window.location.href='/create'">
+<input type="button" title="Create Your Own List And Own Items" style="background-color: purple;" class= "btn btn-primary" value="Create Own Shoppinglist" onclick="window.location.href='/createown'">
+<input type="button" title="View All Available Lists" style="background-color: purple;" class= "btn btn-primary" value="View All Shoppinglists" onclick="window.location.href='/view'">
 </form>
 
 {% endblock %}
