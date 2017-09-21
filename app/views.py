@@ -98,7 +98,6 @@ def editlist(list_name):
         new_list_name = request.form["new_list_name"]
 
         msg = createlist_object.edit(list_name, new_list_name)
-        print msg
 
         if msg == "Shoppinglist Edited Successfully":
             flash("Shoppinglist Edited Successfully")
@@ -154,6 +153,23 @@ def itemadd(list_name):
             and do not add any special characters to the name.", "error")
         return redirect(url_for('viewitem'))
     return render_template('additem.html', list_name=list_name)
+
+@app.route('/edititem/<list_name>/<itemname>', methods=['GET','POST'])
+def itemedit(list_name, itemname):
+    """
+    redirects user to the viewing page after editing is complete
+    """
+    if request.method == 'POST':
+        new_itemname = request.form["new_itemname"]
+
+        msg = createlist_object.edititem(list_name, itemname, new_itemname)
+
+        if msg == "Item Edited Successfully":
+            flash("Item Edited Successfully")
+            return render_template('view.html', userlists=createlist_object.myLists)
+        flash("Item Not Edited. Please try again and do not use any special characters.", "error")
+        return render_template('edititem.html', list_name=list_name, itemname=itemname)
+    return render_template('edititem.html', list_name=list_name, itemname=itemname)
 
 @app.route('/deleteitem/<list_name>/<item_name>', methods=['POST'])
 def itemdel(list_name, item_name):

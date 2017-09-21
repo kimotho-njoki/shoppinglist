@@ -74,6 +74,16 @@ class UpdateLists(object):
             return "Item Not Added"
         return "Item Name Invalid"
 
+    def edititem(self, list_name, itemname, new_itemname):
+        """
+        method for editing item name
+        """
+        if list_name in self.myLists:
+            value = self.myLists[list_name].index(itemname)
+            self.myLists[list_name][value] = new_itemname
+            return "Item Edited Successfully"
+        return "Item Not Edited"
+
     def deleteitem(self, list_name, itemname):
         """
         method for deleting an item
