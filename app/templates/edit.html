@@ -2,16 +2,17 @@
 
 
 {% block content %}
-<a href="/view" style="color: black; font-weight: bold; padding-left: 970px; font-size: 18px;"> View Shoppinglists </a>
+<a href="/view" style="color: purple; font-weight: bold; padding-left: 930px; font-size: 18px;"> View Shoppinglists </a>
 <h2 style="color: white; padding-top: 70px; font-weight: bold;"> Edit Your Shoppinglist </h2>
 <hr>
 <div class="col-md-10" style="padding-top: 120px; padding-left: 300px;">
 <form action="/edit/{{list_name}}" method="POST">
 <table class='table table-hover table-responsive table-bordered'>
+<tr>
 
 <tr>
 <td style="color: purple; font-weight: bold; font-size: 17px;"> New Shoppinglist Name </td>
-<td> <input type="text" name="new_list_name" class="form-control"> </td>
+<td> <input type="text" id="new_list_name" name="new_list_name" class="form-control"> </td>
 </tr>
 
 

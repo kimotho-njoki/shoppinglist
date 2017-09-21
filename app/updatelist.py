@@ -46,7 +46,7 @@ class UpdateLists(object):
         """
         method for editing shoppinglist name
         """
-        if list_name in self.all_catalogs:
+        if list_name in self.myLists:
             self.myLists[new_list_name] = self.myLists.pop(list_name)
             return "Shoppinglist Edited Successfully"
         return "Shoppinglist Not Found"

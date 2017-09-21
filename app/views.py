@@ -98,6 +98,7 @@ def editlist(list_name):
         new_list_name = request.form["new_list_name"]
 
         msg = createlist_object.edit(list_name, new_list_name)
+        print msg
 
         if msg == "Shoppinglist Edited Successfully":
             flash("Shoppinglist Edited Successfully")

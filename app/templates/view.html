@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<a href="/createlist" style="color: black; font-weight: bold; padding-left: 890px; font-size: 18px;"> Create Another Shoppinglist </a>
+<a href="/createlist" style="color: purple; font-weight: bold; padding-left: 840px; font-size: 18px;"> Create Another Shoppinglist </a>
 <div class="row">
 <div class="col-md-10" style="padding-top: 70px; padding-left: 100px;">
 <div class="panel panel-primary">
@@ -22,10 +22,8 @@
 <a href="/viewitem/{{key}}"><button type="button" title="Click To View Items"> {{ key }} </button></a>
 </label>
 <div class="pull-right action-buttons">
-<form action="/edit/{{key}}" method="POST">
-<button type="submit" class="glyphicon glyphicon-pencil" style="text-align: center; font-weight: bold; color: blue;"> Edit </button>
 <form action="/delete/{{key}}" method="POST">
-<button type="submit" class="glyphicon glyphicon-trash" style="text-align: center; font-weight: bold; color: blue;"> Delete </button>
+<button type="submit" class="btn btn-danger"> Delete </button>
 </form>
 </div>
 </div>
@@ -34,6 +32,9 @@
 </div>
 <div class="link" style="padding-left: 50px; font-weight: bold; padding-top: 0px;">
 <a href="/additem/{{key}}"> Add Item </a><br><br>
+</div>
+<div class="link" style="padding-left: 50px; font-weight: bold; padding-top: 0px;">
+<a href="/edit/{{key}}"> Edit Shoppinglist Name </a><br><br>
 </div>
 {% endfor %}
 </div>
