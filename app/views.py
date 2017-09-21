@@ -92,7 +92,7 @@ def deletelist(list_name):
 @app.route('/edit/<list_name>', methods=['GET','POST'])
 def editlist(list_name):
     """
-    redirects user to the viewing page after editing is complete
+    redirects user to the viewing page after list editing is complete
     """
     if request.method == 'POST':
         new_list_name = request.form["new_list_name"]
@@ -157,7 +157,7 @@ def itemadd(list_name):
 @app.route('/edititem/<list_name>/<itemname>', methods=['GET','POST'])
 def itemedit(list_name, itemname):
     """
-    redirects user to the viewing page after editing is complete
+    redirects user to the viewing page after item name editing is complete
     """
     if request.method == 'POST':
         new_itemname = request.form["new_itemname"]
