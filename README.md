@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/kimotho-njoki/shoppinglist.svg?branch=master)](https://travis-ci.org/kimotho-njoki/shoppinglist)
-
-[![Coverage Status](https://coveralls.io/repos/github/kimotho-njoki/shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/kimotho-njoki/shoppinglist?branch=master)
+[![Build Status](https://travis-ci.org/kimotho-njoki/shoppinglist.svg?branch=master)](https://travis-ci.org/kimotho-njoki/shoppinglist) [![Coverage Status](https://coveralls.io/repos/github/kimotho-njoki/shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/kimotho-njoki/shoppinglist?branch=master)
 
 # Shoppinglist
 Shoppinglist is a repository for a ShoppingList App project. The application makes it easier for users to create shopping lists without the need for pen and paper. One can make edits on the list, delete lists, add items as well as delete items from the list.
